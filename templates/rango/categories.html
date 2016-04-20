@@ -1,0 +1,11 @@
+{% if categories %}
+    <ul>
+        {% for category in categories %}
+        <li>{{ category.name }}</li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <strong>Nenhuma categoria.</strong>
+{% endif %}
+
+<p><a href="{% url 'rango:index' %}">Voltar</a>
