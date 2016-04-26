@@ -1,4 +1,3 @@
-#-*- coding:utf-8 -*-
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect, HttpResponse #, Http404
 from rango.models import Category, Page, Question, Choice
@@ -46,11 +45,11 @@ def detail(request, question_id):
     return render(request, 'rango/detail.html', {'question': question})
 
 def results(request, question_id):
-    response = "Você está olhando para os resultados da questão %s."
+    response = "Voce esta olhando para os resultados da questao %s."
     return HttpResponse(response % question_id)
 
 def vote(request, question_id):
-    return HttpResponse("Você está votando na questão %s." % question_id)
+    return HttpResponse("Voce esta votando na questao %s." % question_id)
 
 def add_category(request):
     # A HTTP POST?
