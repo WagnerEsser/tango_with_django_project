@@ -1,18 +1,26 @@
 from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponseRedirect, HttpResponse #, Http404
-# from django.urls import reverse
+from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
 from rango.models import Category, Page, Question, Choice
 from rango.forms import CategoryForm
+from django.views import generic
 
-def index(request):
-    latest_question_list = Question.objects.order_by('-pub_date')[:5]
-    category_list = Category.objects.order_by('-likes')[:5]
-    page_list = Page.objects.order_by('-views')[:5]
+# def index(request):
+#     latest_question_list = Question.objects.order_by('-pub_date')[:5]
+#     category_list = Category.objects.order_by('-likes')[:5]
+#     page_list = Page.objects.order_by('-views')[:5]
 
-    context_dict = {'categories': category_list, 'pages': page_list, 'latest_question_list': latest_question_list}
+#     context_dict = {'categories': category_list, 'pages': page_list, 'latest_question_list': latest_question_list}
 
-    return render(request, 'rango/index.html', context_dict)
+#     return render(request, 'rango/index.html', context_dict)
+
+class IndexView(generic.ListView):
+    template_name = 'rango/index.html'
+    context_object_name = 'latest_question_list'
+
+    def get_queryset(self):
+        """Return the last five published questions."""
+        return Question.objects.order_by('-pub_date')[:5]
 
 def about(request):
     return render(request, 'rango/about.html')
@@ -42,13 +50,21 @@ def category(request, category_name_slug):
 def add_category(request):
     return render(request, 'rango/add_category.html')
 
-def detail(request, question_id):
-    question = get_object_or_404(Question, pk=question_id)
-    return render(request, 'rango/detail.html', {'question': question})
+class DetailView(generic.DetailView):
+    model = Question
+    template_name = 'rango/detail.html'
 
-def results(request, question_id):
-    response = "Voce esta olhando para os resultados da questao %s."
-    return HttpResponse(response % question_id)
+# def detail(request, question_id):
+#     question = get_object_or_404(Question, pk=question_id)
+#     return render(request, 'rango/detail.html', {'question': question})
+
+class ResultsView(generic.DetailView):
+    model = Question
+    template_name = 'rango/results.html'
+
+# def results(request, question_id):
+#     question = get_object_or_404(Question, pk=question_id)
+#     return render(request, 'rango/results.html', {'question': question})
 
 def vote(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
