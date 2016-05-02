@@ -5,25 +5,25 @@ from rango.models import Category, Page, Question, Choice
 from rango.forms import CategoryForm
 from django.views import generic
 
-# def index(request):
-#     latest_question_list = Question.objects.order_by('-pub_date')[:5]
-#     category_list = Category.objects.order_by('-likes')[:5]
-#     page_list = Page.objects.order_by('-views')[:5]
+def index(request):
+    latest_question_list = Question.objects.order_by('-pub_date')[:5]
+    category_list = Category.objects.order_by('-likes')[:5]
+    page_list = Page.objects.order_by('-views')[:5]
 
-#     context_dict = {'categories': category_list, 'pages': page_list, 'latest_question_list': latest_question_list}
+    context_dict = {'categories': category_list, 'pages': page_list, 'latest_question_list': latest_question_list}
 
-#     return render(request, 'rango/index.html', context_dict)
+    return render(request, 'rango/index.html', context_dict)
 
-class IndexView(generic.ListView):
-    template_name = 'rango/index.html'
-    context_object_name = 'latest_question_list'
+# class IndexView(generic.ListView):
+#     template_name = 'rango/index.html'
+#     context_object_name = 'latest_question_list'
 
-    def get_queryset(self):
-        """Return the last five published questions."""
-        return Question.objects.order_by('-pub_date')[:5]
+#     def get_queryset(self):
+#         """Return the last five published questions."""
+#         return Question.objects.order_by('-pub_date')[:5]
 
-def about(request):
-    return render(request, 'rango/about.html')
+# def about(request):
+#     return render(request, 'rango/about.html')
 
 def categories(request):
     category_list = Category.objects.order_by('-likes')
