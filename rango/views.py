@@ -22,9 +22,6 @@ def index(request):
 #         """Return the last five published questions."""
 #         return Question.objects.order_by('-pub_date')[:5]
 
-# def about(request):
-#     return render(request, 'rango/about.html')
-
 def categories(request):
     category_list = Category.objects.order_by('-likes')
     context_dict = {'categories': category_list}    

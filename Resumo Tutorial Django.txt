@@ -1,0 +1,76 @@
+>> Terminado parte 4 do Tutorial Oficial
+>> Comecei a ver o Tutorial Oficial sobre Views Genéricas.
+   (Parei aqui: Subclassificação views genéricas -> https://docs.djangoproject.com/en/dev/topics/class-based-views/)
+>> Após terminar os tópicos acima, seguir para: Tango Django - Tópico 8.3.1
+
+- Pasta do projeto (workspace):
+/home/tango_with_django_project
+
+- Habilitar ambiente virtual:
+# source myvenv/bin/activate
+
+- Habilitar servidor:
+# python manage.py runserver
+
+- Criação de super usuário (habilita o acesso ao painel de administração do Django):
+# python manage.py createsuperuser
+
+
+** GitHub **
+
+// Para instalação do GitHub, ver Item "11. Implantação!" do tutorial DjangoGirls.
+
+- Status do GitHub:
+# git status
+
+- Adicinar arquivos ao próximo commit:
+# git add -A
+
+- Commit das mudanças:
+# git commit -m "mensagem de descrição dessa atualização"
+
+- Atualizar repositório remoto (enviar para o git):
+# git push
+
+- Atualizar repositório atual (pegar do Git):
+# git pull
+
+
+** CRIAÇÃO DE UM MODELO **
+
+1) Criar modelo no "models.py"
+2) Adicionar novo modelo ao "admin.py"
+3) # python manage.py makemigrations
+4) # python manage.py migrate
+5) Criar/Editar o "script população" para o seu novo modelo(s)
+// OPÇÕES OPCIONAIS ---
+6) Configurar um link em urls.py, caso tenha sido criado uma página para mostrar esse novo conteúdo
+
+
+** APRESENTANDO CONTEÚDO **
+
+- Defina uma URL no arquivo urls.py para que se possa acessar sua página na chamada do link
+- Essa URL chamará uma view, então crie essa view no views.py, como exemplo: "def index(request):"
+- Essa view renderizá sua página html, nela chama-se um template html, que estará em sua pasta "templates"
+	- o RETURN da função, é passado 3 parâmetros, sendo eles:
+		- REQUEST: e requisição
+		- a localização do template (index.html)
+		- um vetor passando todas os dados do banco de dados que será utilizada no index.html
+- Então crie um template, "index.html" e utilize as variáveis (seguindo os nomes dos campos no models.py, exemplo: post.titulo)
+
+
+** FORMULÁRIOS **
+
+
+
+
+** Banco de Dados **
+
+- Criar base de dados do Django:
+# python manage.py migrate
+
+- Preparar arquivo de atualização da base de dados, adicionando os novos modelos criados (models.py):
+# python manage.py makemigrations nome_do_app
+
+- Implementar o arquivo de atualização no banco de dados:
+# python manage.py migrate nome_do_app

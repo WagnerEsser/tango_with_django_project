@@ -1,3 +1,5 @@
+#coding: utf-8
+
 from django.conf.urls import patterns, url
 from rango import views
 
@@ -9,10 +11,6 @@ urlpatterns = patterns('',
     url(r'^$', views.index, name='index'),
 	
 	# Tango Django
-	# url(r'^about/', views.about, name='about'),
-    # utilizando a view genérica abaixo (TemplateView), ele chama o template direto (template_name="rango/about.html"),
-    # não precisando criar nossa própria view, pois a view que gerará o template 'about.html' não precisa de nenhum cálculo
-    # específico, só precisa renderizar o template 'about.html'
     url(r'^about/', TemplateView.as_view(template_name="rango/about.html"), name='about'),
     url(r'^categories/', views.categories, name='categories'),
     url(r'^category/(?P<category_name_slug>[\w\-]+)/$', views.category, name='category'),
