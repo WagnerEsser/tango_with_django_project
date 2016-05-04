@@ -1,3 +1,4 @@
+#coding: utf-8
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
@@ -24,14 +25,11 @@ def category(request, category_name_slug):
     context_dict = {}
 
     try:
-        category = Category.objects.get(slug=category_name_slug)
-        context_dict['category_name'] = category.name
+        category = Category.objects.get(slug=category_name_slug) # .get retorna um objeto Category
+        pages = Page.objects.filter(category=category) # .filter retorna um dicionário de objetos "Page"
 
-        pages = Page.objects.filter(category=category)
-
-        context_dict['pages'] = pages
-        context_dict['category'] = category
-        context_dict['category_name_slug'] = category_name_slug
+        context_dict['category'] = category # passa o objeto Category
+        context_dict['pages'] = pages # passa todas as páginas desse objeto em questão
     except Category.DoesNotExist:
         pass
 
@@ -63,7 +61,7 @@ def add_category(request):
 
 def add_page(request, category_name_slug):
     try:
-        cat = Category.objects.get(slug=category_name_slug)
+        cat = Category.objects.get(slug=category_name_slug)  # cat está recebendo um objeto Category na qual se quer add a página
     except Category.DoesNotExist:
         cat = None
 

@@ -6,20 +6,21 @@
     </head>
 
     <body>
-        {% if category %}
-	        <h1>{{ category_name }}</h1>
-            {% if pages %}
+        {% if category %} <!-- 'category' >> é um objeto Category -->
+	        <h1>{{ category.name }}</h1>
+            {% if pages %} <!-- 'pages' >> é um dicionário de objetos Page -->
             <ul>
-                {% for page in pages %}
+                {% for page in pages %} <!-- para cada objeto Page do dicinário 'pages' -->
                 <li><a href="{{ page.url }}">{{ page.title }}</a></li>
                 {% endfor %}
             </ul>
             {% else %}
                 <p><strong>Sem páginas nesta categoria.</strong></p>
-                <a href="#">Adicionar página</a>
         {% endif %}
         {% else %}
             Essa categoria não existe!
         {% endif %}
+        
+        <a href="{% url 'rango:add_page' category.slug %}">Adicionar página</a>
     </body>
 </html>
