@@ -2,9 +2,11 @@ from django.conf.urls import patterns, url
 from rango import views
 from django.views.generic import TemplateView
 
-urlpatterns = patterns('',
+urlpatterns  =  [
     url(r'^$', views.index, name='index'),
-	
+    url(r'^add_user$', views.add_user, name="add_user"),
+    url(r'^register/$', views.register, name='register'), # ADD NEW PATTERN!
+
 	# Tango Django
     url(r'^about/', TemplateView.as_view(template_name="rango/about.html"), name='about'),
     url(r'^categories/', views.categories, name='categories'),
@@ -14,7 +16,6 @@ urlpatterns = patterns('',
 
     # Django Oficial
     url(r'^question/(?P<question_id>[0-9]+)/$', views.detail, name='detail'),
-    url(r'^question/(?P<question_id>[0-9]+)/results/$', views.results, name='results'),
     url(r'^question/(?P<question_id>[0-9]+)/vote/$', views.vote, name='vote'),
-
-)
+    url(r'^question/(?P<question_id>[0-9]+)/results/$', views.results, name='results'),
+]

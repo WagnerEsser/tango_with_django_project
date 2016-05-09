@@ -1,6 +1,7 @@
 #coding: utf-8
 from django.contrib import admin
 from rango.models import Category, Page, Question, Choice
+from rango.models import UserProfile
 
 class ChoiceInline(admin.TabularInline):
     model = Choice
@@ -8,8 +9,8 @@ class ChoiceInline(admin.TabularInline):
 
 class ChoiceAdmin(admin.ModelAdmin):
     fieldsets = [
-    	(None,				 {'fields':['question']}),
-        (None,               {'fields': ['choice_text']}),
+    	(None, {'fields':['question']}),
+        (None, {'fields': ['choice_text']}),
         (None, {'fields': ['votes']}),
     ]
     list_display = ('choice_text', 'votes', 'question')
@@ -31,3 +32,4 @@ admin.site.register(Page)
 admin.site.register(Category)
 admin.site.register(Question, QuestionAdmin)
 admin.site.register(Choice, ChoiceAdmin)
+admin.site.register(UserProfile)
