@@ -1,20 +1,19 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Rango</title>
-        <meta charset="UTF-8">
-    </head>
+{% extends 'rango/base.html' %}
 
-    <body>
-    	{% if categories %}
-		    <ul>
-		        {% for category in categories %}
-		        <li>{{ category.name }}</li>
-		        {% endfor %}
-		    </ul>
-		{% else %}
-		    <strong>Nenhuma categoria.</strong>
-		{% endif %}
-		<p><a href="{% url 'rango:index' %}">Voltar</a>
-	</body>
-</html>
+{% load staticfiles %}
+
+{% block title %} Sobre {% endblock %}
+
+{% block body_block %}
+
+	{% if categories %}
+	    <ul>
+	        {% for category in categories %}
+	        <li>{{ category.name }}</li>
+	        {% endfor %}
+	    </ul>
+	{% else %}
+	    <strong>Nenhuma categoria.</strong>
+	{% endif %}
+
+{% endblock %}

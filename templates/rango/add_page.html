@@ -1,28 +1,28 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Rango</title>
-        <meta charset="UTF-8">
-    </head>
+{% extends 'rango/base.html' %}
 
-    <body>
-        <h1>Adicionar uma página para a categoria "{{ category.slug }}":</h1>
+{% load staticfiles %}
 
-        <form id="category_form" method="post" action="{% url 'rango:add_page' category.slug %}">
+{% block title %} Sobre {% endblock %}
 
-            {% csrf_token %}
-            {% for hidden in form.hidden_fields %}
-                {{ hidden }}
-            {% endfor %}
+{% block body_block %}
 
-            {% for field in form.visible_fields %}
-                {{ field.errors }}
-                {{ field.help_text }}
-                {{ field }}
-                <br/><br/>
-            {% endfor %}
+    <h1>Adicionar uma página para a categoria "{{ category.slug }}":</h1>
 
-            <input type="submit" name="submit" value="Criar página" />
-        </form>
-    </body>
-</html>
+    <form id="category_form" method="post" action="{% url 'rango:add_page' category.slug %}">
+
+        {% csrf_token %}
+        {% for hidden in form.hidden_fields %}
+            {{ hidden }}
+        {% endfor %}
+
+        {% for field in form.visible_fields %}
+            {{ field.errors }}
+            {{ field.help_text }}
+            {{ field }}
+            <br/><br/>
+        {% endfor %}
+
+        <input type="submit" name="submit" value="Criar página" />
+    </form>
+        
+{% endblock %}

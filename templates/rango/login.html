@@ -1,24 +1,23 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <!-- Is anyone getting tired of repeatedly entering the header over and over?? -->
-        <title>Rango</title>
-    </head>
+{% extends 'rango/base.html' %}
 
-    <body>
-        <h1>Login to Rango</h1>
+{% load staticfiles %}
 
-        <form id="login_form" method="post" action="/rango/login/">
-            {% csrf_token %}
-            Username: <input type="text" name="username" value="" size="50" />
-            <br />
-            <br />
-            Password: <input type="password" name="password" value="" size="50" />
-            <br />
-            <br />
+{% block title %} Sobre {% endblock %}
 
-            <input type="submit" value="submit" />
-        </form>
+{% block body_block %}
 
-    </body>
-</html>
+    <h1>Login to Rango</h1>
+
+    <form id="login_form" method="post" action="/rango/login/">
+        {% csrf_token %}
+        Username: <input type="text" name="username" value="" size="50" />
+        <br />
+        <br />
+        Password: <input type="password" name="password" value="" size="50" />
+        <br />
+        <br />
+
+        <input type="submit" value="submit" />
+    </form>
+
+{% endblock %}
