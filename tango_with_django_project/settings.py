@@ -16,6 +16,8 @@ import os
 # BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 # Resultado: /home/tango_with_django_project
 
+LOGIN_URL = '/rango/login/'
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Resultado: home/tango_with_django_project/tango_with_django_project
 

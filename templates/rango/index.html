@@ -6,9 +6,18 @@
     </head>
 
     <body>
-        <h1>Rango diz.. Alô mundo!</h1> (<a href="{% url 'rango:about' %}">Sobre</a>)<br/><br/>
-        <p><a href="{% url 'admin:index' %}">Login</a></p>
+
+        {% if user.is_authenticated %}
+            <h1>Rango diz... Alô {{ user.username }}! (<a href="{% url 'rango:logout' %}">Sair</a>)</h1>
+            <p><a href="{% url 'rango:restricted' %}">Teste de restrição</a></p>
+            <p><a href="{% url 'index' %}admin">Painel de administração</a></p>
+        {% else %}
+            <h1>Rango diz.. Alô mundo!</h1>
+            <p><a href="{% url 'rango:login' %}">Entrar</a></p>
+        {% endif %}
+
         <p><a href="{% url 'rango:register' %}">Cadastre-se</a></p>
+        <p><a href="{% url 'rango:about' %}">Sobre</a></p>
 
 ====================================================
 
@@ -24,7 +33,9 @@
             <strong>Sem categorias.</strong>
         {% endif %}
 
-        <p><a href="{% url 'rango:add_category' %}">Adicionar categoria</a></p>
+        {% if user.is_authenticated %}
+            <p><a href="{% url 'rango:add_category' %}">Adicionar categoria</a></p>
+        {% endif %}
 
 ====================================================
         

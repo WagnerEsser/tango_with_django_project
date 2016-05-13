@@ -21,6 +21,8 @@
             Essa categoria não existe!
         {% endif %}
         
-        <a href="{% url 'rango:add_page' category.slug %}">Adicionar página</a>
+        {% if user.is_authenticated %}
+            <a href="{% url 'rango:add_page' category.slug %}">Adicionar página</a>
+        {% endif %}
     </body>
 </html>
