@@ -146,6 +146,12 @@ def categories(request):
 
     return render(request, 'rango/categories.html', context_dict)
 
+def pages(request):
+    page_list = Page.objects.order_by('-views')
+    context_dict = {'pages': page_list}
+
+    return render(request, 'rango/pages.html', context_dict)
+
 def category(request, category_name_slug):
     context_dict = {}
 

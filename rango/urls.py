@@ -13,6 +13,7 @@ urlpatterns  =  [
     url(r'^logout/$', views.user_logout, name='logout'),
     url(r'^about/', TemplateView.as_view(template_name="rango/about.html"), name='about'),
     url(r'^categories/', views.categories, name='categories'),
+    url(r'^pages/', views.pages, name='pages'),
     url(r'^category/(?P<category_name_slug>[\w\-]+)/$', views.category, name='category'),
     url(r'^category/(?P<category_name_slug>[\w\-]+)/add_page$', views.add_page, name='add_page'),
     url(r'^add_category/$', views.add_category, name='add_category'),

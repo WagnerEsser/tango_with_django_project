@@ -6,14 +6,24 @@
 
 {% block body_block %}
 
+    <div class="page-header">
+        <h1>Lista de categorias</h1>
+    </div>
+
 	{% if categories %}
-	    <ul>
-	        {% for category in categories %}
-	        <li>{{ category.name }}</li>
-	        {% endfor %}
-	    </ul>
+	    <div class="list-group col-sm-4">
+            {% for category in categories %}
+                <a type='button' class='list-group-item' href="{% url 'rango:category' category.slug %}">
+                    {{ category.name }}
+                </a>
+            {% endfor %}
+        </div>
 	{% else %}
 	    <strong>Nenhuma categoria.</strong>
 	{% endif %}
+	
+	<div class="list-group col-sm-12">
+		<p><a href="{% url 'rango:add_category' %}" class='btn btn-info'>Adicionar categoria</a></p>
+	</div>
 
 {% endblock %}
