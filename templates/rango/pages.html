@@ -13,7 +13,7 @@
 	{% if pages %}
 	    <div class="list-group col-sm-4">
 	        {% for page in pages %}
-	            <a type='button' class='list-group-item' href="{{page.url}}">
+	            <a type='button' class='list-group-item' href="{% url 'rango:gotopage' %}?page_id={{ page.id }}">
 	                {{ page.title }}
 	                <span class="badge">{{ page.views }}</span>
 	            </a>

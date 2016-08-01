@@ -13,7 +13,7 @@
 	{% if categories %}
 	    <div class="list-group col-sm-4">
             {% for category in categories %}
-                <a type='button' class='list-group-item' href="{% url 'rango:category' category.slug %}">
+                <a type='button' class='list-group-item' href="{% url 'rango:gotocategory' %}?category_id={{ category.id }}">
                     {{ category.name }}
                 </a>
             {% endfor %}

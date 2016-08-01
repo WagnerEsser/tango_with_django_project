@@ -1,5 +1,5 @@
 #coding: utf-8
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
 from rango.models import Category, Page, Question, Choice
@@ -242,3 +242,54 @@ def vote(request, question_id):
 def results(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
     return render(request, 'rango/results.html', {'question': question})
+
+def clique_numa_pagina(request):
+    if request.method == 'GET':
+        if 'page_id' in request.GET:
+            page_id = request.GET['page_id']
+            try:
+                page = Page.objects.get(id=page_id)
+                if page:
+                    page.views = page.views+1;
+                    page.save()
+                    return redirect(page.url)
+                else:
+                    #return HttpResponse("Erro!")
+                    return HttpResponse("Não Existe página!")
+            except Page.DoesNotExist:
+                return HttpResponse("Página não existe")
+    return HttpResponseRedirect(reverse('rango:index'))
+
+def clique_numa_categoria(request):
+    if request.method == 'GET':
+        if 'category_id' in request.GET:
+            category_id = request.GET['category_id']
+            try:
+                category = Category.objects.get(id=category_id)
+                if category:
+                    category.views = category.views+1;
+                    category.save()
+                    return HttpResponseRedirect(reverse('rango:category', args=(category.slug,)))
+                else:
+                    #return HttpResponse("Erro!")
+                    return HttpResponse("Não Existe categoria!")
+            except Category.DoesNotExist:
+                return HttpResponse("Categoria não existe")
+    return HttpResponseRedirect(reverse('rango:index'))
+
+def curtir_uma_categoria(request):
+    if request.method == 'GET':
+        if 'category_id' in request.GET:
+            category_id = request.GET['category_id']
+            try:
+                category = Category.objects.get(id=category_id)
+                if category:
+                    category.likes = category.likes+1;
+                    category.save()
+                    return HttpResponseRedirect(reverse('rango:category', args=(category.slug,)))
+                else:
+                    #return HttpResponse("Erro!")
+                    return HttpResponse("Não Existe categoria!")
+            except Category.DoesNotExist:
+                return HttpResponse("Categoria não existe")
+    return HttpResponseRedirect(reverse('rango:index'))

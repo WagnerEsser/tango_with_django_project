@@ -17,6 +17,9 @@ urlpatterns  =  [
     url(r'^category/(?P<category_name_slug>[\w\-]+)/$', views.category, name='category'),
     url(r'^category/(?P<category_name_slug>[\w\-]+)/add_page$', views.add_page, name='add_page'),
     url(r'^add_category/$', views.add_category, name='add_category'),
+    url(r'^gotopage/$', views.clique_numa_pagina, name='gotopage'),
+    url(r'^gotocategory/$', views.clique_numa_categoria, name='gotocategory'),
+    url(r'^likecategory/$', views.curtir_uma_categoria, name='likecategory'),
 
     # Django Oficial
     url(r'^question/(?P<question_id>[0-9]+)/$', views.detail, name='detail'),

@@ -9,12 +9,19 @@
     {% if category %} <!-- 'category' >> é um objeto Category -->
         <div class="page-header">
             <h1>{{ category.name }}</h1>
+            <h5>
+                Likes: {{ category.likes }}
+                <a href="{% url 'rango:likecategory' %}?category_id={{ category.id }}"><span class='glyphicon glyphicon-thumbs-up' style="font-size:20px;"></span></a>
+            </h5>
+            <h5>Views: {{ category.views }}</h5>
+            <h5>Slug: {{ category.slug }}</h5>
+            <h5>ID: {{ category.id }}</h5>
         </div>
 
         {% if pages %} <!-- 'pages' >> é um dicionário de objetos Page -->
             <div class="list-group col-sm-4">
                 {% for page in pages %}
-                    <a type='button' class='list-group-item' href="{{page.url}}">
+                    <a type="button" class='list-group-item' href="{% url 'rango:gotopage' %}?page_id={{ page.id }}">
                         {{ page.title }}
                         <span class="badge">{{ page.views }}</span>
                     </a>
