@@ -8,6 +8,7 @@ from django.views import generic
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
+from bing_search import run_query
 
 @login_required
 def restricted(request):
@@ -293,3 +294,15 @@ def curtir_uma_categoria(request):
             except Category.DoesNotExist:
                 return HttpResponse("Categoria não existe")
     return HttpResponseRedirect(reverse('rango:index'))
+
+def search(request):
+    result_list = []
+
+    if request.method == 'POST':
+        query = request.POST['query'].strip()
+
+        if query:
+            # Run our Bing function to get the results list!
+            result_list = run_query(query)
+
+    return render(request, 'rango/search.html', {'result_list': result_list})

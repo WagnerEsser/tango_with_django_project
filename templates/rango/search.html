@@ -1,0 +1,46 @@
+{% extends "rango/base.html" %}
+
+{% load staticfiles %}
+
+{% block title %}Pesquisa{% endblock %}
+
+{% block body_block %}
+
+    <div class="page-header">
+        {% if result_list %}<h1>Pesquisa -> Resultados</h1>{% else %}<h1>Pesquisar</h1>{% endif %}
+    </div>
+
+    <div class="row">
+        <div class="panel">
+
+            <form class="form-inline" id="user_form" method="post" action="{% url 'rango:search' %}">
+                {% csrf_token %}
+                <!-- Display the search form elements here -->
+                <input class="form-control" type="text" size="100%" name="query" value="" id="query" />
+                <input class="btn btn-primary" type="submit" name="submit" value="Pesquisar" />
+                <br />
+                <br />
+            </form>
+
+            {% if result_list %}
+                <div class="panel">
+                    <div class="panel-heading">
+                        <!-- Display search results in an ordered list -->
+                        <div class="panel-body">
+                            <div class="list-group">
+                                {% for result in result_list %}
+                                    <div class="list-group-item">
+                                        <h4 class="list-group-item-heading"><a href="{{ result.link }}">{{ result.title }}</a></h4>
+                                        <p class="list-group-item-text">{{ result.summary }}</p>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+
+        </div>
+    </div>
+
+{% endblock %}

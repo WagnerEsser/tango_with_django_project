@@ -20,6 +20,7 @@ urlpatterns  =  [
     url(r'^gotopage/$', views.clique_numa_pagina, name='gotopage'),
     url(r'^gotocategory/$', views.clique_numa_categoria, name='gotocategory'),
     url(r'^likecategory/$', views.curtir_uma_categoria, name='likecategory'),
+    url(r'^search$', views.search, name='search'),
 
     # Django Oficial
     url(r'^question/(?P<question_id>[0-9]+)/$', views.detail, name='detail'),
