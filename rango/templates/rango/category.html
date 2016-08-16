@@ -40,4 +40,16 @@
         <p class="bg-danger text-danger" style="padding:10px;"><strong>Essa categoria não existe</strong></p>
     {% endif %}
 
+    <div class='list-group col-sm-12'>
+    <hr/>
+        <form class="form-inline" id="user_form" method="post" action="{% url 'rango:search' %}">
+            {% csrf_token %}
+            <!-- Display the search form elements here -->
+            <input class="form-control" type="text" size="50" name="query" value="" id="query" placeholder="Pesquise por uma página..." />
+            <input class="btn btn-primary" type="submit" name="submit" value="Pesquisar" />
+            <br />
+            <br />
+        </form>
+    </div>
+
 {% endblock %}

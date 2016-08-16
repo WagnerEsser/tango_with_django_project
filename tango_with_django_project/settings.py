@@ -13,55 +13,7 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 
-# BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-# Resultado: /home/tango_with_django_project
-
-LOGIN_URL = '/rango/login/'
-
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-# Resultado: home/tango_with_django_project/tango_with_django_project
-
-# PROJECT_PATH = os.path.dirname(os.path.abspath(__file__))
-# print "PROJETO: "+PROJECT_PATH
-
-STATIC_PATH = os.path.join(BASE_DIR,'rango/static')
-
-STATICFILES_DIRS = (
-    STATIC_PATH,
-)
-
-STATIC_URL = '/static/' 
-
-TEMPLATE_PATH = os.path.join(BASE_DIR,'templates/')
-
-TEMPLATE_DIRS  =  (
-    TEMPLATE_PATH,
-)
-
-TEMPLATES = [
-    {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
-        'APP_DIRS': True,
-        'OPTIONS': {
-            'context_processors': [
-                'django.template.context_processors.debug',
-                'django.template.context_processors.request',
-                'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
-            ],
-        },
-    },
-]
-
-#print __file__
-#print os.path.dirname(__file__)
-#print os.path.dirname(os.path.dirname(__file__))
-
-#TEMPLATE_PATH = os.path.join(BASE_DIR, 'templates')
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'aips_=^n!ci8f&j+*u72s4_jtb32_ttqbpi+8jar+vcg5465k^'
@@ -71,6 +23,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# Quick-start development settings - unsuitable for production
+# See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 
 # Application definition
 
@@ -84,10 +38,21 @@ INSTALLED_APPS = (
     'rango',
 )
 
-PASSWORD_HASHERS = (
-'django.contrib.auth.hashers.PBKDF2PasswordHasher',
-'django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher',
-)
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
+    },
+]
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -104,6 +69,12 @@ ROOT_URLCONF = 'tango_with_django_project.urls'
 
 WSGI_APPLICATION = 'tango_with_django_project.wsgi.application'
 
+LOGIN_URL = '/rango/login/'
+
+PASSWORD_HASHERS = (
+	'django.contrib.auth.hashers.PBKDF2PasswordHasher',
+	'django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher',
+)
 
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
@@ -114,7 +85,6 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
@@ -131,3 +101,5 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
+
+STATIC_URL = '/static/' 
