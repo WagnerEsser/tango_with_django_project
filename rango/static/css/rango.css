@@ -1,0 +1,17 @@
+.rango-about{
+    background-color: #cecece;
+    padding: 20px
+}
+
+.rango-warning{
+    padding: 10px;
+    font-weight: bold;
+}
+
+.rango-icon-like{
+    font-size: 20px;
+}
+
+.rango-form-login{
+    margin: 0 auto auto 50px !important;
+}

@@ -11,7 +11,7 @@
             <h1>{{ category.name }}</h1>
             <h5>
                 Likes: {{ category.likes }}
-                <a href="{% url 'rango:likecategory' %}?category_id={{ category.id }}"><span class='glyphicon glyphicon-thumbs-up' style="font-size:20px;"></span></a>
+                <a href="{% url 'rango:likecategory' %}?category_id={{ category.id }}"><span class='glyphicon glyphicon-thumbs-up rango-icon-like'></span></a>
             </h5>
             <h5>Views: {{ category.views }}</h5>
             <h5>Slug: {{ category.slug }}</h5>
@@ -37,7 +37,7 @@
             </div>
         {% endif %}
     {% else %}
-        <p class="bg-danger text-danger" style="padding:10px;"><strong>Essa categoria não existe</strong></p>
+        <p class="bg-danger text-danger rango-warning"><strong>Essa categoria não existe</strong></p>
     {% endif %}
 
     <div class='list-group col-sm-12'>

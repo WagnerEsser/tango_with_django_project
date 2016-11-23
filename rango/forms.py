@@ -34,7 +34,6 @@ class PageForm(forms.ModelForm):
     title = forms.CharField(max_length=128, help_text="Please enter the title of the page.")
     url = forms.URLField(max_length=200, help_text="Please enter the URL of the page.")
     views = forms.IntegerField(widget=forms.HiddenInput(), initial=0)
-    cpf = forms.IntegerField(help_text="CPF:")
 
     class Meta:
         # Provide an association between the ModelForm and a model
@@ -59,15 +58,3 @@ class PageForm(forms.ModelForm):
             cleaned_data['url'] = url
 
         return cleaned_data
-
-    def clean_cpf(self):
-        cpf = self.cleaned_data['cpf']  # OU: self.cleaned_data.get('url')
-
-        # [...]    //Efetuar cálculos sobre o cpf
-
-        ## LÓGICA ##
-        # if cpf == "inválido":
-        #     raise forms.ValidationError("CPF inválido")
-        # else:
-        #     # CPF CORRETO
-        #     return cpf

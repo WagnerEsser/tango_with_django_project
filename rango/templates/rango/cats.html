@@ -9,6 +9,6 @@
 		    <a href="{% url 'rango:gotocategory' %}?category_id={{ category.id }}">{{ category.name }}</a></li>
 		{% endfor %}
 	{% else %}
-    	<li> <strong>Não há categorias ainda.</strong></li>
+    	<p class="bg-danger text-danger rango-warning">Não há categorias ainda.</p>
 	{% endif %}
 </ul>

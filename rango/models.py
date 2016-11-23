@@ -46,7 +46,6 @@ class Page(models.Model):
     title = models.CharField(max_length=128)
     url = models.URLField()
     views = models.IntegerField(default=0) # contabilizando
-    cpf = models.IntegerField()
 
     def __str__(self):
         return self.title
