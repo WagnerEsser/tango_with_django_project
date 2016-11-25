@@ -1,6 +1,8 @@
-from django.conf.urls import patterns, url
-from rango import views
+# coding:utf-8
+from django.conf.urls import url
 from django.views.generic import TemplateView
+
+from rango import views
 
 urlpatterns  =  [
     url(r'^$', views.index, name='index'),
@@ -22,7 +24,7 @@ urlpatterns  =  [
     url(r'^likecategory/$', views.curtir_uma_categoria, name='likecategory'),
     url(r'^search$', views.search, name='search'),
 
-    # Django Oficial
+    # # Django Oficial
     url(r'^question/(?P<question_id>[0-9]+)/$', views.detail, name='detail'),
     url(r'^question/(?P<question_id>[0-9]+)/vote/$', views.vote, name='vote'),
     url(r'^question/(?P<question_id>[0-9]+)/results/$', views.results, name='results'),

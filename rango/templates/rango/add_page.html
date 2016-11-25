@@ -1,6 +1,6 @@
 {% extends 'rango/base.html' %}
 
-{% load staticfiles %}
+{% load static %}
 
 {% block title %} Add página {% endblock %}
 
@@ -9,7 +9,8 @@
     {% if category %}
         <form role="form"  id="page_form" method="post" action="{% url 'rango:add_page' category.slug %}">
             <h2 class="form-signin-heading">
-                Adicionar página para <a href="/rango/category/{{category.slug}}/"> {{ category.name }}</a>
+
+                Adicionar página para <a href="{% url 'rango:category' category.slug %}"> {{ category.name }}</a>
             </h2><br/>
 
             {% csrf_token %}

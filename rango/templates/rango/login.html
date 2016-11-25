@@ -1,14 +1,14 @@
 {% extends 'rango/base.html' %}
 
-{% load staticfiles %}
+{% load static %}
 
 {% block title %} Login {% endblock %}
 
 {% block body_block %}
 
-    <link href="http://getbootstrap.com/examples/signin/signin.css" rel="stylesheet">
+    <link href="{% static 'css/signin.css' %}" rel="stylesheet">
 
-    <form class="form-signin rango-form-login" role="form" method="post" action="/rango/login/" id="login_form">
+    <form class="form-signin rango-form-login" role="form" method="post" action="{%  url 'rango:login' %}" id="login_form">
         {% csrf_token %}
 
         <h2 class="form-signin-heading">Entrar</h2><br/>
