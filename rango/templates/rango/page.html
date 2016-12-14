@@ -1,0 +1,53 @@
+{% extends 'rango/base.html' %}
+
+{% block title %}
+    {% if id %}
+        Edição de página
+    {% else %}
+        Nova página
+    {% endif %}
+{% endblock %}
+
+{% block body_block %}
+
+    {% if not id %}
+        <h2 class="form-signin-heading">Cadastro de Página:</h2><br/>
+    {% else %}
+        <h2 class="form-signin-heading">Edição da Página</h2><br/>
+    {% endif %}
+
+    <form role="form" id="page_form" method="post" action="{% url 'rango:cad_page' category %}">
+        {% csrf_token %}
+        {% for hidden in form.hidden_fields %}
+            {{ hidden }}
+        {% endfor %}
+
+        {% if not id %}
+            <input type="hidden" name="id" value="">
+        {% else %}
+            <input type="hidden" name="id" value="{{ id }}">
+        {% endif %}
+
+        <div class="form-group" style="width: 250px">
+            <label>{{ form.title.help_text }}</label><br/>
+            {{ form.title }}
+            {% if form.title.errors %}
+                <div class="alert alert-danger rango-input-error" role="alert">
+                    {{ form.title.errors }}
+                </div>
+            {% endif %}
+        </div>
+        <div class="form-group" style="width: 250px">
+            <label>{{ form.url.help_text }}</label><br/>
+            {{ form.url }}
+            {% if form.url.errors %}
+                <div class="alert alert-danger rango-input-error" role="alert">
+                    {{ form.url.errors }}
+                </div>
+            {% endif %}
+        </div>
+
+        {% include 'rango/blocos/buttons_form.html' %}
+    </form>
+
+{% endblock %}

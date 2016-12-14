@@ -1,7 +1,7 @@
 #coding: utf-8
 from django import forms
 from django.contrib.auth.models import User
-from rango.models import UserProfile
+from rango.models import UserProfileModel
 
 
 class UserForm(forms.ModelForm):
@@ -11,7 +11,8 @@ class UserForm(forms.ModelForm):
         model = User
         fields = ('username', 'email', 'password')
 
+
 class UserProfileForm(forms.ModelForm):
     class Meta:
-        model = UserProfile
+        model = UserProfileModel
         fields = ('website', 'picture')

@@ -1,7 +1,5 @@
 {% extends 'rango/base.html' %}
 
-{% load static %}
-
 {% block title %} Páginas {% endblock %}
 
 {% block body_block %}
@@ -10,21 +8,23 @@
         <h1>Lista de páginas</h1>
     </div>
 
-	{% if pages %}
-	    <div class="list-group col-sm-4">
-	        {% for page in pages %}
-	            <a type='button' class='list-group-item' href="{% url 'rango:gotopage' %}?page_id={{ page.id }}">
-	                {{ page.title }}
-	                <span class="badge">{{ page.views }}</span>
-	            </a>
-	        {% endfor %}
-	    </div>
-	{% else %}
-	    <strong>Nenhuma página.</strong>
-	{% endif %}
-	
-	<div class="list-group col-sm-12">
-		<p><a href="{% url 'rango:categories' %}" class='btn btn-info'>Adicionar página</a></p>
-	</div>
+    {% if pages %}
+        <div class="list-group col-sm-4">
+            {% for page in pages %}
+                <a type='button' class='list-group-item' href="{% url 'rango:gotopage' %}?page_id={{ page.id }}">
+                    {{ page.title }}
+                    <span class="badge">{{ page.views }}</span>
+                </a>
+            {% endfor %}
+        </div>
+    {% else %}
+        <strong>Nenhuma página.</strong>
+    {% endif %}
+
+    {% if user.is_authenticated %}
+        <div class="list-group col-sm-12">
+            <p><a href="{% url 'rango:categories' %}" class='btn btn-info'>Adicionar página</a></p>
+        </div>
+    {% endif %}
 
 {% endblock %}

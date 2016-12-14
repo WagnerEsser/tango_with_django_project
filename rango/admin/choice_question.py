@@ -1,11 +1,12 @@
-#coding: utf-8
+# coding: utf-8
 from django.contrib import admin
-from rango.models import Category, Page, Question, Choice
-from rango.models import UserProfile
+from rango.models import *
+
 
 class ChoiceInline(admin.TabularInline):
-    model = Choice
+    model = ChoiceModel
     extra = 3
+
 
 class ChoiceAdmin(admin.ModelAdmin):
     fieldsets = [
@@ -14,6 +15,7 @@ class ChoiceAdmin(admin.ModelAdmin):
         (None, {'fields': ['votes']}),
     ]
     list_display = ('choice_text', 'votes', 'question')
+
 
 class QuestionAdmin(admin.ModelAdmin):
     fieldsets = [
@@ -25,11 +27,6 @@ class QuestionAdmin(admin.ModelAdmin):
     search_fields = ['question_text']
     inlines = [ChoiceInline]
 
-class CategoryAdmin(admin.ModelAdmin):
-    prepopulated_fields = {'slug':('name',)}
 
-admin.site.register(Page)
-admin.site.register(Category)
-admin.site.register(Question, QuestionAdmin)
-admin.site.register(Choice, ChoiceAdmin)
-admin.site.register(UserProfile)
+admin.site.register(QuestionModel, QuestionAdmin)
+admin.site.register(ChoiceModel, ChoiceAdmin)

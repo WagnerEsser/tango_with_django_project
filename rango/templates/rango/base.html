@@ -47,8 +47,12 @@
                 <li><a href="{% url 'rango:about' %}">Sobre</a></li>
                 {% if user.is_authenticated %}
                     <li><a href="{% url 'rango:restricted' %}">Restrito</a></li>
-                    <li><a href="{% url 'rango:logout' %}?next=/rango/">Sair</a></li>
+                    <li><a href=""> | </a></li>
+                    <li><a href="{% url 'admin:index' %}"><i class="glyphicon glyphicon-user"></i>
+                        Olá {{ user.username }}</a></li>
+                    <li><a class='text-danger' href="{% url 'rango:logout' %}?next=/rango/">(Sair)</a></li>
                 {% else %}
+                    <li><a> | </a></li>
                     <li><a href="{% url 'rango:register' %}">Cadastrar-se</a></li>
                     <li><a href="{% url 'rango:login' %}">Entrar</a></li>
                 {% endif %}

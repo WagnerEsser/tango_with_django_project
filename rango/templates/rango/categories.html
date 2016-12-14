@@ -1,7 +1,5 @@
 {% extends 'rango/base.html' %}
 
-{% load static %}
-
 {% block title %} Categorias {% endblock %}
 
 {% block body_block %}
@@ -10,20 +8,23 @@
         <h1>Lista de categorias</h1>
     </div>
 
-	{% if categories %}
-	    <div class="list-group col-sm-4">
+    {% if categories %}
+        <div class="list-group col-sm-4">
             {% for category in categories %}
-                <a type='button' class='list-group-item' href="{% url 'rango:gotocategory' %}?category_id={{ category.id }}">
+                <a type='button' class='list-group-item'
+                   href="{% url 'rango:gotocategory' %}?category_id={{ category.id }}">
                     {{ category.name }}
                 </a>
             {% endfor %}
         </div>
-	{% else %}
-	    <strong>Nenhuma categoria.</strong>
-	{% endif %}
-	
-	<div class="list-group col-sm-12">
-		<p><a href="{% url 'rango:add_category' %}" class='btn btn-info'>Adicionar categoria</a></p>
-	</div>
+    {% else %}
+        <strong>Nenhuma categoria.</strong>
+    {% endif %}
+
+    {% if user.is_authenticated %}
+        <div class="list-group col-sm-12">
+            <p><a href="{% url 'rango:cad_category' %}" class='btn btn-info'>Adicionar categoria</a></p>
+        </div>
+    {% endif %}
 
 {% endblock %}

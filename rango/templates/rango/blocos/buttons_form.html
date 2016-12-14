@@ -1,0 +1,14 @@
+<br/>
+<div class="">
+    <div class="">
+        {% if not id %}
+            <input type="submit" name="submit" class="btn btn-success" value="Cadastrar"/>
+        {% else %}
+            <input type="submit" name="submit" class="btn btn-success" value="Atualizar"/>
+        {% endif %}
+        <input type="reset" name="limpar" class="btn btn-default" value="Limpar"/>
+        <button type="button" onclick="location.href={% url 'rango:index' %}" class="btn btn-danger">
+            Cancelar
+        </button>
+    </div>
+</div>

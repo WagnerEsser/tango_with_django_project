@@ -4,7 +4,7 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'tango_with_django_project.setti
 import django
 django.setup()
 
-from rango.models import Category, Page
+from rango.models import CategoryModel, PageModel
 
 
 def populate():
@@ -63,19 +63,19 @@ def populate():
     )
 
     # Print out what we have added to the user.
-    for c in Category.objects.all():
-        for p in Page.objects.filter(category=c):
+    for c in CategoryModel.objects.all():
+        for p in PageModel.objects.filter(category=c):
             print "- {0} - {1}".format(str(c), str(p))
 
 def add_page(cat, title, url, views=0):
-    p = Page.objects.get_or_create(category=cat, title=title)[0]
+    p = PageModel.objects.get_or_create(category=cat, title=title)[0]
     p.url=url
     p.views=views
     p.save()
     return p
 
 def add_cat(name, views=0, likes=0):
-    c = Category.objects.get_or_create(name=name)[0]
+    c = CategoryModel.objects.get_or_create(name=name)[0]
     c.views = views
     c.likes = likes
     c.save()

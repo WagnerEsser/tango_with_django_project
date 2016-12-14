@@ -1,55 +1,44 @@
 {% extends 'rango/base.html' %}
 
-{% load static %}
-
-{% block title %}{{ category.name }}{% endblock %}
+{% block title %}
+    {% if id %}
+        Edição de categoria
+    {% else %}
+        Nova categoria
+    {% endif %}
+{% endblock %}
 
 {% block body_block %}
 
-    {% if category %} <!-- 'category' >> é um objeto Category -->
-        <div class="page-header">
-            <h1>{{ category.name }}</h1>
-            <h5>
-                Likes: {{ category.likes }}
-                <a href="{% url 'rango:likecategory' %}?category_id={{ category.id }}"><span class='glyphicon glyphicon-thumbs-up rango-icon-like'></span></a>
-            </h5>
-            <h5>Views: {{ category.views }}</h5>
-            <h5>Slug: {{ category.slug }}</h5>
-            <h5>ID: {{ category.id }}</h5>
-        </div>
-
-        {% if pages %} <!-- 'pages' >> é um dicionário de objetos Page -->
-            <div class="list-group col-sm-4">
-                {% for page in pages %}
-                    <a type="button" class='list-group-item' href="{% url 'rango:gotopage' %}?page_id={{ page.id }}">
-                        {{ page.title }}
-                        <span class="badge">{{ page.views }}</span>
-                    </a>
-                {% endfor %}
-            </div>
-        {% else %}
-            <p><strong>Sem páginas nesta categoria.</strong></p>
-        {% endif %}
-
-        {% if user.is_authenticated %}
-            <div class="list-group col-sm-12">
-                <a href="{% url 'rango:add_page' category.slug %}" class='btn btn-success'>Adicionar página</a>
-            </div>
-        {% endif %}
+    {% if not id %}
+        <h2 class="form-signin-heading">Cadastro de Categoria:</h2><br/>
     {% else %}
-        <p class="bg-danger text-danger rango-warning"><strong>Essa categoria não existe</strong></p>
+        <h2 class="form-signin-heading">Edição da Categoria</h2><br/>
     {% endif %}
 
-    <div class='list-group col-sm-12'>
-    <hr/>
-        <form class="form-inline" id="user_form" method="post" action="{% url 'rango:search' %}">
-            {% csrf_token %}
-            <!-- Display the search form elements here -->
-            <input class="form-control" type="text" size="50" name="query" value="" id="query" placeholder="Pesquise por uma página..." />
-            <input class="btn btn-primary" type="submit" name="submit" value="Pesquisar" />
-            <br />
-            <br />
-        </form>
-    </div>
+    <form role="form" id="category_form" method="post" action="{% url 'rango:cad_category' %}">
+        {% csrf_token %}
+        {% for hidden in form.hidden_fields %}
+            {{ hidden }}
+        {% endfor %}
+
+        {% if not id %}
+            <input type="hidden" name="id" value="">
+        {% else %}
+            <input type="hidden" name="id" value="{{ id }}">
+        {% endif %}
+
+        <div class="form-group" style="width: 250px">
+            <label>{{ form.name.help_text }}</label><br/>
+            {{ form.name }}
+            {% if form.name.errors %}
+                <div class="alert alert-danger rango-input-error" role="alert">
+                    {{ form.name.errors }}
+                </div>
+            {% endif %}
+        </div>
+
+        {% include 'rango/blocos/buttons_form.html' %}
+    </form>
 
 {% endblock %}
