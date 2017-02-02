@@ -1,5 +1,12 @@
 # Descrição
 ---
+Tutorial feito na disciplina Desenvolvimento WEB II
+
+Instituto Federal Catarinense Câmpus Araquari
+
+Curso de Bacharelado em Sistemas de Informação
+
+---
 * **Tutorial:** [Tango With Django](http://www.tangowithdjango.com/book17/).
 * **Autor:** Wagner Esser
 * **Requerimentos:**
