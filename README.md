@@ -1,12 +1,11 @@
-# Descrição
----
+# tango_with_django_project
+
 Tutorial feito na disciplina Desenvolvimento WEB II
 
 Instituto Federal Catarinense Câmpus Araquari
 
 Curso de Bacharelado em Sistemas de Informação
 
----
 * **Tutorial:** [Tango With Django](http://www.tangowithdjango.com/book17/).
 * **Autor:** Wagner Esser
 * **Requerimentos:**
@@ -14,8 +13,9 @@ Curso de Bacharelado em Sistemas de Informação
     * Django 1.8
     * Pillow 3.3.0
 
-# Virtualenv
+# Tutorial
 ---
+# Virtualenv
 
 ### Habilitar o Virtualenvwrapper na inicialização:
 * Na pasta do usuário
@@ -46,7 +46,6 @@ Curso de Bacharelado em Sistemas de Informação
 
 
 # Preparação do ambiente virtual (virtualenv ativada)
----
 
 ### Listar pacotes instalados
 `pip list`
@@ -60,7 +59,6 @@ Curso de Bacharelado em Sistemas de Informação
 `pip freeze`
 
 # GitHub
----
 
 ### Instalar o GitHub
 `apt-get install git`
@@ -120,7 +118,6 @@ Reseta os arquivos da máquina local para os arquivo do Git:
 `git reset --hard origin/branch_name`
 
 # Criar arquivo requirements.txt - Pacotes requeridos para rodar esse projeto
----
 
 ### Colocar lista de pacotes instalados na virtualenv no arquivo
 `pip freeze > requirements.txt`
@@ -131,7 +128,6 @@ Reseta os arquivos da máquina local para os arquivo do Git:
 >Sempre que modificar os pacotes instalados (instalar/desinstalar), atualizar o requirements.txt
 
 # Criar arquivo de contribuidores
----
 
 ### Crie na pasta do projeto o arquivo contributors.txt
 `nano contributors.txt`
@@ -139,7 +135,6 @@ Reseta os arquivos da máquina local para os arquivo do Git:
 Adicione os nomes dos contribuidores do projeto
 
 # Criar e configurar o projeto
----
 
 ### Criar projeto Django
 `django-admin.py startproject nome_projeto`
@@ -154,7 +149,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 ~~~~
 
 # Arquivos do projeto
----
 
 ### `__inti__.py`
 Um script Python em branco cuja presença indica ao interpretador Python que o diretório é um pacote de Python.
@@ -163,7 +157,6 @@ Um script Python em branco cuja presença indica ao interpretador Python que o d
 Um script Python usado para ajudar a executar o seu servidor de desenvolvimento e implantar seu projeto para um ambiente de produção.
 
 # Criar arquivo .gitignore - Lista de arquivo que serão ignorados no commit pelo Git
----
 
 ### Crie na pasta do projeto um arquivo .gitignore
 `nano .gitignore`
@@ -240,7 +233,6 @@ target/
 ~~~~
 
 # Criar e configurar o aplicativo
----
 
 ### Criar o app
 'python manage.py startapp nome_app'
@@ -280,7 +272,6 @@ url(r'^$', views.index, name='index'),
 ~~~~
 
 # Configurar o PyCharm
----
 
 ### Menu: **File >> Open**
 Selecione a pasta do projeto
@@ -294,7 +285,6 @@ Selecione a VirtualEnv desejada ou crie uma nova
 Habilitar opção: “Enable Django Support”, selecione a pasta raiz do projeto, selecione o arquivo settings.py e manage.py.
 
 # BANCO DE DADOS - CRIAÇÃO DE MODELO
----
 
 ### 1) Criar modelo no models.py. Exemplo:
 ~~~~
@@ -327,7 +317,6 @@ admin.site.register(Post)
 `python manage.py migrate nome_app`
 
 # APRESENTAR CONTEÚDO
----
 
 ### 1) Defina uma URL no arquivo urls.py para que se possa acessar sua página na chamada do link, essa URL chamará uma view, crie a view no views.py, como exemplo:
 ~~~~
@@ -344,7 +333,6 @@ def index(request):
 ### 3) Crie então um template, ex: index.html, e utilize as variáveis do dicionário criado.
 
 # CRIAR FORMULÁRIO
----
 
 ### 1) Criar um formulário em forms.py conforme o modelo do banco de dados
 
