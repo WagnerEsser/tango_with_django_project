@@ -12,9 +12,9 @@ Curso de Bacharelado em Sistemas de Informação
     * Python 2.7
     * Django 1.8
     * Pillow 3.3.0
-
-# Tutorial
+    
 ---
+# Tutorial
 # Virtualenv
 
 ### Habilitar o Virtualenvwrapper na inicialização:
