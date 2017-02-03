@@ -6,8 +6,10 @@ Instituto Federal Catarinense Câmpus Araquari
 
 Curso de Bacharelado em Sistemas de Informação
 
-* **Tutorial:** [Tango With Django](http://www.tangowithdjango.com/book17/).
 * **Autor:** Wagner Esser
+* **Tutorial:** [Tango With Django](http://www.tangowithdjango.com/book17/).
+* **Linguagem:** Python
+* **Framework:** Django
 * **Servidor online:** [PythonAnyWhere](http://wagneresser.pythonanywhere.com/)
 
 ---
