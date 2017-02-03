@@ -9,31 +9,42 @@ Curso de Bacharelado em Sistemas de Informação
 * **Tutorial:** [Tango With Django](http://www.tangowithdjango.com/book17/).
 * **Autor:** Wagner Esser
 * **Servidor online:** [PythonAnyWhere](http://wagneresser.pythonanywhere.com/)
+
 ---
 # TUTORIAL PARA RODAR O PROJETO
 Copie o projeto no GIT:
+
 `$ git clone https://github.com/WagnerEsser/tango_with_django_project.git`
+
 `$ cd tango_with_django_project/`
 
 Crie uma *Virtualenv*:
+
 `$ mkvirtualenv rango`
 
 Com a *virtualenv* ativada: *(Para ativar a virtualenv: `$ workon tango`)*
+
 `$ pip install -r requirements.txt`
+
 `$ pip install --upgrade pip`
+
 `$ python manage.py makemigrations`
+
 `$ python manage.py migrate`
 
 Crie um super usuário (administrador):
+
 `$ python manage.py createsuperuser`
 
 Execute com python o arquivo *populate_rango.py* (população do banco de dados):
+
 `$ python populate_rango.py`
 
 > Caso tenha a BING API KEY, adicione-a ao arquivo *rango/keys.py*, dentro das aspas, como segue o exemplo abaixo, caso contrário, a pesquisa não irá funcionar:
 `BING_API_KEY='XXXXX'`
 
 Execute o servidor:
+
 `$ python manage.py runserver`
 
 Acesse-o com http://127.0.0.1:8000/.
@@ -44,9 +55,13 @@ Acesse-o com http://127.0.0.1:8000/.
 ## Virtualenv
 
 Habilitar o *Virtualenvwrapper* na inicialização:
+
 *Na pasta do usuário:*
+
 `$ nano .bashrc`
+
 *Acrescente essa linha*
+
 `$ source virtualenvwrapper.sh`
 > Virtualenvwrapper é um pacote adicionar que cria um ambiente utilizável para o virtualenv, possibilita utilizar comandos como ls no virtualenv."
 
@@ -77,20 +92,27 @@ Habilitar o *Virtualenvwrapper* na inicialização:
 ###### Inicializar um repositório local (Somente para inicialização do projeto)
 `$ git init`
 *Para GitHub:*
+
 `$ git config user.name "username"`
+
 `$ git config user.email you@example.com`
+
 *Para Bitbucket:*
+
 `$ git config --global user.email "you@example.com"`
+
 `$ git config --global user.name "Your Name"`
 ###### Status do GitHub
 `$ git status`
 ###### Adicionar arquivos ao próximo *commit*
 `$ git add -A`
+
 `$ git add --all`
 ###### *Commit* das mudanças
 `$ git commit -m "mensagem de descrição dessa atualização"`
 ###### Enviando o código para o Git (1ª vez)
 `$ git remote add origin https://github.com/<your-github-username>/my-first-blog.git`
+
 `$ git push -u origin nome`
 ###### Enviando o código para o Git
 `$ git push`
@@ -102,8 +124,11 @@ Habilitar o *Virtualenvwrapper* na inicialização:
 `$ git pull`
 ###### Forçar `git pull`
 *Busca os arquivos do Git, mas sem substituir os da máquina local ainda:*
+
 `git fetch --all`
+
 *Reseta os arquivos da máquina local para os arquivo do Git:*
+
 `$ git reset --hard origin/branch_name`
 
 ## Criar arquivo *requirements.txt* - Pacotes requeridos para rodar o projeto
@@ -118,6 +143,7 @@ Habilitar o *Virtualenvwrapper* na inicialização:
 
 ###### Crie na pasta do projeto o arquivo *contributors.txt*
 `$ nano contributors.txt`
+
 *Adicione os nomes dos contribuidores do projeto*
 
 ## Criar e configurar o projeto
@@ -145,6 +171,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 ###### Crie na pasta do projeto um arquivo *.gitignore*
 `$ nano .gitignore`
+
 *Adicione arquivo e diretórios que serão ignorados no push*
 ###### Convenção do *.gitignore*
 ~~~~
@@ -257,7 +284,7 @@ url(r'^$', views.index, name='index'),
 
 ## Banco de Dados - Criação de Modelo (*classes*)
 
-1. Criar modelo no *models.py*. Exemplo:
+Criar modelo no *models.py*. Exemplo:
 ~~~~
 class Post(models.Model):
 	author = models.ForeignKey('auth.User')
@@ -273,34 +300,44 @@ class Post(models.Model):
 	def __str__(self):
     	return self.title
 ~~~~
-2. Adicionar novo modelo ao *admin.py*. Exemplo:
+Adicionar novo modelo ao *admin.py*. Exemplo:
 ~~~~
 from .models import Post, Comment
 
 admin.site.register(Post)
 ~~~~
-3. Preparar arquivo de atualização da base de dados, adicionando os novos modelos criados (*models.py*):
+Preparar arquivo de atualização da base de dados, adicionando os novos modelos criados (*models.py*):
+
 `$ python manage.py makemigrations nome_app`
-4. Implementar o arquivo de atualização no banco de dados:
+
+Implementar o arquivo de atualização no banco de dados:
+
 `$ python manage.py migrate nome_app`
 
 ## Apresentar conteúdo
 
-1. Defina uma URL no arquivo *urls.py* para que se possa acessar sua página na chamada do *link*, essa URL chamará uma *view*, crie a *view* no *views.py*, como exemplo:
+Defina uma URL no arquivo *urls.py* para que se possa acessar sua página na chamada do *link*, essa URL chamará uma *view*, crie a *view* no *views.py*, como exemplo:
 ~~~~
 def index(request):
 ~~~~
-2. Essa *view* renderizá sua página HTML, nela chama-se um template HTML, que estará em sua pasta *templates*, no return da função, passa-se 3 parâmetros, sendo eles:
+Essa *view* renderizá sua página HTML, nela chama-se um template HTML, que estará em sua pasta *templates*, no return da função, passa-se 3 parâmetros, sendo eles:
+
 + *request*: a requisição
 + A localização do template (Ex: *index.html*)
 + Um dicionário passando todas os dados que serão utilizados na página.
-3. Crie então um template, ex: *index.html*, e utilize as variáveis do dicionário criado.
+
+Crie então um template, ex: *index.html*, e utilize as variáveis do dicionário criado.
 
 ## Criar formulário
 
-1. Criar um formulário em *forms.py* conforme o modelo do banco de dados
-2. Criar em *urls.py*, exemplo:
+Criar um formulário em *forms.py* conforme o modelo do banco de dados
+
+Criar em *urls.py*, exemplo:
+
 `url(r'^sobre/$', views.sobre, name='sobre’),`
-3. Como essa *view* mostrará o formulário para inserir dados ou processará um formulário já requisitado (*request.POST*), logo deverá conter a verificação para gerar o formulário ou processar uma requisição:
+
+Como essa *view* mostrará o formulário para inserir dados ou processará um formulário já requisitado (*request.POST*), logo deverá conter a verificação para gerar o formulário ou processar uma requisição:
+
 `if request.method == 'POST':`
-4. Por final criar a página que mostrará o formulário.
+
+Por final criar a página que mostrará o formulário.
