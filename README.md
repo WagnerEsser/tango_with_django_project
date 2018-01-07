@@ -10,7 +10,6 @@ Curso de Bacharelado em Sistemas de Informação
 * **Tutorial:** [Tango With Django](http://www.tangowithdjango.com/book17/).
 * **Linguagem:** Python
 * **Framework:** Django
-* **Servidor online:** [PythonAnyWhere](http://wagneresser.pythonanywhere.com/)
 
 ---
 # TUTORIAL PARA RODAR O PROJETO
@@ -23,6 +22,7 @@ Copie o projeto no GIT:
 Crie uma *Virtualenv*:
 
 `$ mkvirtualenv rango`
+> Para utilizar esse comando, *virtualenvwrapper* deve estar ativado, para ativar utilize o comando *source virtualenvwrapper.sh*
 
 Com a *virtualenv* ativada: *(Para ativar a virtualenv: `$ workon tango`)*
 
@@ -65,7 +65,7 @@ Habilitar o *Virtualenvwrapper* na inicialização:
 *Acrescente essa linha*
 
 `$ source virtualenvwrapper.sh`
-> Virtualenvwrapper é um pacote adicionar que cria um ambiente utilizável para o virtualenv, possibilita utilizar comandos como ls no virtualenv."
+> Virtualenvwrapper é um pacote adicional que cria um ambiente utilizável para o virtualenv, possibilita utilizar comandos como ls no virtualenv."
 
 ###### Criar um ambiente virtual
 `$ mkvirtualenv nome_do_ambiente`
